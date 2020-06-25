@@ -1,0 +1,4 @@
+2020-06-23 23:30:27.6068 INFO Info message from our controller.
+2020-06-23 23:30:27.7917 DEBUG Debug message from our controller.
+2020-06-23 23:30:27.7917 WARN Warn from our controller.
+2020-06-23 23:30:27.8060 ERROR Error message from our controller.
