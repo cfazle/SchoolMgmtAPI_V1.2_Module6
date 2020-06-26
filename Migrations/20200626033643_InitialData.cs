@@ -25,7 +25,9 @@ namespace SchoolMgmtAPI.Migrations
                 columns: table => new
                 {
                     OrganizationId = table.Column<Guid>(nullable: false),
-                    OrgName = table.Column<string>(maxLength: 60, nullable: false)
+                    OrgName = table.Column<string>(maxLength: 60, nullable: false),
+                    Address = table.Column<string>(maxLength: 60, nullable: false),
+                    Country = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -38,6 +40,7 @@ namespace SchoolMgmtAPI.Migrations
                 {
                     UserId = table.Column<Guid>(nullable: false),
                     UserName = table.Column<string>(maxLength: 30, nullable: false),
+                    Email = table.Column<string>(maxLength: 30, nullable: false),
                     OrganizationId = table.Column<Guid>(nullable: false),
                     CourseId = table.Column<Guid>(nullable: true)
                 },
@@ -70,27 +73,27 @@ namespace SchoolMgmtAPI.Migrations
 
             migrationBuilder.InsertData(
                 table: "Organizations",
-                columns: new[] { "OrganizationId", "OrgName" },
+                columns: new[] { "OrganizationId", "Address", "Country", "OrgName" },
                 values: new object[,]
                 {
-                    { new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"), "xyz org" },
-                    { new Guid("3d490a70-94ce-4d15-9494-5248280c2ce3"), "lmnop org" }
+                    { new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"), "583 Wall Dr. Gwynn Oak, MD 21207", "USA", "xyz org" },
+                    { new Guid("3d490a70-94ce-4d15-9494-5248280c2ce3"), "3036 English Creek Ave, EHT, NJ 08234", "USA", "lmnop org" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "UserId", "CourseId", "OrganizationId", "UserName" },
-                values: new object[] { new Guid("80abbca8-664d-4b20-b5de-024705497d4a"), null, new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"), "fchoudhury" });
+                columns: new[] { "UserId", "CourseId", "Email", "OrganizationId", "UserName" },
+                values: new object[] { new Guid("80abbca8-664d-4b20-b5de-024705497d4a"), null, "abc@gmail.com", new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"), "fchoudhury" });
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "UserId", "CourseId", "OrganizationId", "UserName" },
-                values: new object[] { new Guid("86dba8c0-d178-41e7-938c-ed49778fb52a"), null, new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"), "fac3" });
+                columns: new[] { "UserId", "CourseId", "Email", "OrganizationId", "UserName" },
+                values: new object[] { new Guid("86dba8c0-d178-41e7-938c-ed49778fb52a"), null, "xyz@gmail.com", new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"), "fac3" });
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "UserId", "CourseId", "OrganizationId", "UserName" },
-                values: new object[] { new Guid("021ca3c1-0deb-4afd-ae94-2159a8479811"), null, new Guid("3d490a70-94ce-4d15-9494-5248280c2ce3"), "fac33" });
+                columns: new[] { "UserId", "CourseId", "Email", "OrganizationId", "UserName" },
+                values: new object[] { new Guid("021ca3c1-0deb-4afd-ae94-2159a8479811"), null, "efg@gmail.com", new Guid("3d490a70-94ce-4d15-9494-5248280c2ce3"), "fac33" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_CourseId",

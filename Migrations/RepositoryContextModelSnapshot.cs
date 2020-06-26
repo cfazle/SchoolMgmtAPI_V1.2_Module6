@@ -66,6 +66,14 @@ namespace SchoolMgmtAPI.Migrations
                         .HasColumnName("OrganizationId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(60)")
+                        .HasMaxLength(60);
+
+                    b.Property<string>("Country")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("OrgName")
                         .IsRequired()
                         .HasColumnType("nvarchar(60)")
@@ -79,11 +87,15 @@ namespace SchoolMgmtAPI.Migrations
                         new
                         {
                             Id = new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"),
+                            Address = "583 Wall Dr. Gwynn Oak, MD 21207",
+                            Country = "USA",
                             OrgName = "xyz org"
                         },
                         new
                         {
                             Id = new Guid("3d490a70-94ce-4d15-9494-5248280c2ce3"),
+                            Address = "3036 English Creek Ave, EHT, NJ 08234",
+                            Country = "USA",
                             OrgName = "lmnop org"
                         });
                 });
@@ -97,6 +109,11 @@ namespace SchoolMgmtAPI.Migrations
 
                     b.Property<Guid?>("CourseId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(30)")
+                        .HasMaxLength(30);
 
                     b.Property<Guid>("OrganizationId")
                         .HasColumnType("uniqueidentifier");
@@ -118,18 +135,21 @@ namespace SchoolMgmtAPI.Migrations
                         new
                         {
                             Id = new Guid("80abbca8-664d-4b20-b5de-024705497d4a"),
+                            Email = "abc@gmail.com",
                             OrganizationId = new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"),
                             UserName = "fchoudhury"
                         },
                         new
                         {
                             Id = new Guid("86dba8c0-d178-41e7-938c-ed49778fb52a"),
+                            Email = "xyz@gmail.com",
                             OrganizationId = new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"),
                             UserName = "fac3"
                         },
                         new
                         {
                             Id = new Guid("021ca3c1-0deb-4afd-ae94-2159a8479811"),
+                            Email = "efg@gmail.com",
                             OrganizationId = new Guid("3d490a70-94ce-4d15-9494-5248280c2ce3"),
                             UserName = "fac33"
                         });
