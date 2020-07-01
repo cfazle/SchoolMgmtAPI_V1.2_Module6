@@ -9,6 +9,10 @@ namespace Repository
         private IOrganizationRepository _organizationRepository;
         private IUserRepository _userRepository;
         private ICourseRepository _courseRepository;
+        private ISectionRepository _sectionRepository;
+        private IEnrollmentRepository _enrollmentRepository;
+        private IAssignmentRepository _assignmentRepository;
+        private ISubmissionRepository _submissionRepository;
 
         public RepositoryManager(RepositoryContext repositoryContext)
         {
@@ -48,7 +52,53 @@ namespace Repository
             }
         }
 
-      //  ICourseRepository IRepositoryManager.Course => throw new System.NotImplementedException();
+        public ISectionRepository Section
+        {
+            get
+            {
+                if (_sectionRepository == null)
+                    _sectionRepository = new SectionRepository(_repositoryContext);
+
+                return _sectionRepository;
+            }
+        }
+
+        public IEnrollmentRepository Enrollment
+        {
+            get
+            {
+                if (_enrollmentRepository == null)
+                    _enrollmentRepository = new EnrollmentRepository(_repositoryContext);
+
+                return _enrollmentRepository;
+            }
+        }
+
+      
+
+        public ISubmissionRepository Submission
+        {
+            get
+            {
+                if (_submissionRepository == null)
+                    _submissionRepository = new SubmissionRepository(_repositoryContext);
+
+                return _submissionRepository;
+            }
+        }
+
+        public IAssignmentRepository Assignment
+        {
+            get
+            {
+                if (_assignmentRepository == null)
+                    _assignmentRepository = new AssignmentRepository(_repositoryContext);
+
+                return _assignmentRepository;
+            }
+        }
+
+        //  ICourseRepository IRepositoryManager.Course => throw new System.NotImplementedException();
 
         public void Save() => _repositoryContext.SaveChanges();
     }

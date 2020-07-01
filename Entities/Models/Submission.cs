@@ -5,14 +5,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Entities.Models
 {
-    public class Course
+    public class Submission
     {
-        [Column("CourseId")]
+        [Column("SubmissionId")]
         public Guid Id { get; set; }
 
-        [Required(ErrorMessage = "Course name is a required field.")]
-        [MaxLength(30, ErrorMessage = "Maximum length for the Name is 30 characters.")]
-        public string CourseName { get; set; }
+        [Required(ErrorMessage = "Submission text is a required field.")]
+        [MaxLength(60, ErrorMessage = "Maximum length for the submission text is 30 characters.")]
+        public String SubmissionText { get; set; }
+
+        public int Score { get; set; }
 
         [DataType(DataType.Date)]
         [Column(TypeName = "Date")]
@@ -22,10 +24,11 @@ namespace Entities.Models
         [Column(TypeName = "Date")]
         public DateTime UpdatedDate { get; set; }
 
+        [ForeignKey(nameof(Assignment))]
+        public Guid AssignmentId { get; set; }
+
         [ForeignKey(nameof(User))]
         public Guid UserId { get; set; }
-
-        //  public Organization Organization { get; set; }
 
         public ICollection<User> Users { get; set; }
     }
